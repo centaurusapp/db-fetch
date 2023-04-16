@@ -1,0 +1,4 @@
+__pycache__
+*.jpg
+.DS_Store
+checker.log

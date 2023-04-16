@@ -1,0 +1,4 @@
+schedule
+pymongo
+boto3
+Pillow
