@@ -50,6 +50,8 @@ def generateImage(newItem):
             filename = str(newItem.get('_id')) +'.jpg'
             image = Image.open(filename)
             image.save(imgIo, quality=95)
+            imgIo.seek(0)
+            image = imgIo.read()
             logger.info("file saved: %s", filename)
             image.close()
             uploadImage(filename)
