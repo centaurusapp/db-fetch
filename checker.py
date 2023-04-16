@@ -46,9 +46,10 @@ def generateImage(newItem):
         response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=payload)
         r = response.json()
         for i in r['images']:
-            image = Image.open(io.BytesIO(base64.b64decode(i.split(",",1)[0])))
+            imgIo = io.BytesIO(base64.b64decode(i.split(",",1)[0]))
             filename = str(newItem.get('_id')) +'.jpg'
-            image.save(filename, quality=95)
+            image = Image.open(filename)
+            image.save(imgIo, quality=95)
             logger.info("file saved: %s", filename)
             image.close()
             uploadImage(filename)
